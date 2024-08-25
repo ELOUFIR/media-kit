@@ -1880,6 +1880,7 @@ class NativePlayer extends PlatformPlayer {
               String? title;
               String? language;
               bool? image;
+              bool def = false;
               bool? albumart;
               String? codec;
               String? decoder;
@@ -1932,6 +1933,9 @@ class NativePlayer extends PlatformPlayer {
                       break;
                     case 'albumart':
                       albumart = map.values[j].u.flag > 0;
+                      break;
+                    case 'default':
+                      def = map.values[j].u.flag > 0;
                       break;
                   }
                 }
@@ -2016,6 +2020,8 @@ class NativePlayer extends PlatformPlayer {
                       rotate: rotate,
                       par: par,
                       audiochannels: audiochannels,
+                      uri: false,
+                      def: def
                     ),
                   );
                   break;
@@ -2039,6 +2045,9 @@ class NativePlayer extends PlatformPlayer {
                       rotate: rotate,
                       par: par,
                       audiochannels: audiochannels,
+                      uri: false,
+                      data: false,
+                      def: def
                     ),
                   );
                   break;

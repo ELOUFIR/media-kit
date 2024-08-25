@@ -143,6 +143,7 @@ class VideoTrack extends _Track {
 class AudioTrack extends _Track {
   /// Whether the audio track is loaded from URI.
   final bool uri;
+  final bool def;
 
   /// {@macro audio_track}
   const AudioTrack(
@@ -164,6 +165,7 @@ class AudioTrack extends _Track {
     super.par,
     super.audiochannels,
     this.uri = false,
+    this.def = false,
   });
 
   /// No audio track. Disables audio output.
@@ -215,6 +217,7 @@ class AudioTrack extends _Track {
 class SubtitleTrack extends _Track {
   /// Whether the subtitle track is loaded from URI.
   final bool uri;
+  final bool def;
 
   /// Whether the audio track is loaded from data.
   final bool data;
@@ -240,6 +243,7 @@ class SubtitleTrack extends _Track {
     super.audiochannels,
     this.uri = false,
     this.data = false,
+    this.def = false,
   });
 
   /// No subtitle track. Disables subtitle output.
