@@ -1269,12 +1269,19 @@ class NativePlayer extends PlatformPlayer {
 
       if (track.uri || track.data) {
         final String uri;
-        if (track.uri) {
+        if (track.uri && track.srtContent == null) {
           uri = track.id;
         } else if (track.data) {
           // Save the subtitle data to a temporary [File].
           final temp = await TempFile.create();
           await temp.write_(track.id);
+          // Delete the temporary [File] upon [dispose].
+          release.add(temp.delete_);
+          uri = temp.uri.toString();
+        } else if (track.srtContent != null) {
+          // Save the subtitle data to a temporary [File].
+          final temp = await TempFile.create();
+          await temp.write_(track.srtContent);
           // Delete the temporary [File] upon [dispose].
           release.add(temp.delete_);
           uri = temp.uri.toString();

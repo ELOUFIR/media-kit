@@ -165,7 +165,7 @@ class AudioTrack extends _Track {
     super.par,
     super.audiochannels,
     this.uri = false,
-    this.def = false,
+    this.def = false
   });
 
   /// No audio track. Disables audio output.
@@ -218,6 +218,7 @@ class SubtitleTrack extends _Track {
   /// Whether the subtitle track is loaded from URI.
   final bool uri;
   final bool def;
+  final String? srtContent;
 
   /// Whether the audio track is loaded from data.
   final bool data;
@@ -244,6 +245,7 @@ class SubtitleTrack extends _Track {
     this.uri = false,
     this.data = false,
     this.def = false,
+    this.srtContent = null,
   });
 
   /// No subtitle track. Disables subtitle output.
@@ -261,8 +263,9 @@ class SubtitleTrack extends _Track {
     String uri, {
     String? title,
     String? language,
+    String? srtContent,
   }) =>
-      SubtitleTrack(uri, title, language, uri: true);
+      SubtitleTrack(uri, title, language, srtContent: srtContent, uri: true);
 
   /// [SubtitleTrack] loaded with data.
   ///
