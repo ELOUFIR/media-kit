@@ -1520,6 +1520,8 @@ class NativePlayer extends PlatformPlayer {
   }
 
   Future<void> _handler(Pointer<generated.mpv_event> event) async {
+    if (event.ref.event_id != 22)
+      print("-----------------------> ######### "+ event.ref.event_id.toString());
     if (event.ref.event_id ==
         generated.mpv_event_id.MPV_EVENT_PROPERTY_CHANGE) {
       final prop = event.ref.data.cast<generated.mpv_event_property>();
@@ -1629,6 +1631,7 @@ class NativePlayer extends PlatformPlayer {
     if (event.ref.event_id ==
         generated.mpv_event_id.MPV_EVENT_PROPERTY_CHANGE) {
       final prop = event.ref.data.cast<generated.mpv_event_property>();
+      //print("MPV_EVENT_PROPERTY_CHANGE - " + prop.ref.name.cast<Utf8>().toDartString());
       if (prop.ref.name.cast<Utf8>().toDartString() == 'pause' &&
           prop.ref.format == generated.mpv_format.MPV_FORMAT_FLAG) {
         final playing = prop.ref.data.cast<Int8>().value == 0;
@@ -2597,6 +2600,7 @@ class NativePlayer extends PlatformPlayer {
         properties['vo'] = 'null';
         properties['ao'] = 'null';
       }
+      properties['ao'] = 'alsa';
 
       for (final property in properties.entries) {
         final name = property.key.toNativeUtf8();
