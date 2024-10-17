@@ -44,7 +44,7 @@ Pod::Spec.new do |s|
       'GCC_WARN_INHIBIT_ALL_WARNINGS'                => 'YES',
       'HEADER_SEARCH_PATHS'                          => '"$(inherited)" "$(PROJECT_DIR)/../.symlinks/plugins/media_kit_native_event_loop/common/darwin/Headers"',
       'FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]'        => sprintf('"$(inherited)" "%s"', framework_search_paths_iphoneos),
-      'FRAMEWORK_SEARCH_PATHS[sdk=appletvos*]'        => sprintf('"$(inherited)" "%s"', framework_search_paths_appletvos)
+      'FRAMEWORK_SEARCH_PATHS[sdk=appletvos*]'        => sprintf('"$(inherited)" "%s"', framework_search_paths_appletvos),
       'FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]' => sprintf('"$(inherited)" "%s"', framework_search_paths_iphonesimulator),
       'FRAMEWORK_SEARCH_PATHS[sdk=appletvsimulator*]' => sprintf('"$(inherited)" "%s"', framework_search_paths_appletvsimulator),
       'OTHER_LDFLAGS'                                => '"$(inherited)" -framework Mpv -lpthread',
