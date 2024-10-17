@@ -61,6 +61,9 @@ abstract class NativeLibrary {
       'ios': [
         'Mpv.framework/Mpv',
       ],
+      'tvos': [
+        'Mpv.framework/Mpv',
+      ],
       'android': [
         'libmpv.so',
       ],

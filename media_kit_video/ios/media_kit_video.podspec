@@ -32,16 +32,22 @@ Pod::Spec.new do |s|
     framework_search_paths_iphoneos        = sprintf('$(PROJECT_DIR)/../.symlinks/plugins/%s/ios/Frameworks/.symlinks/mpv/ios', mku.libs_package)
     framework_search_paths_iphonesimulator = sprintf('$(PROJECT_DIR)/../.symlinks/plugins/%s/ios/Frameworks/.symlinks/mpv/ios-simulator', mku.libs_package)
 
+    framework_search_paths_appletvos        = sprintf('$(PROJECT_DIR)/../.symlinks/plugins/%s/ios/Frameworks/.symlinks/mpv/ios', mku.libs_package)
+    framework_search_paths_appletvsimulator = sprintf('$(PROJECT_DIR)/../.symlinks/plugins/%s/ios/Frameworks/.symlinks/mpv/ios-simulator', mku.libs_package)
+
     s.source_files        = 'Classes/plugin/**/*.swift', 'Headers/**/*.h'
     s.pod_target_xcconfig = {
       'DEFINES_MODULE'                               => 'YES',
       'GCC_WARN_INHIBIT_ALL_WARNINGS'                => 'YES',
       'GCC_PREPROCESSOR_DEFINITIONS'                 => '"$(inherited)" GL_SILENCE_DEPRECATION COREVIDEO_SILENCE_GL_DEPRECATION',
       'FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]'        => sprintf('"$(inherited)" "%s"', framework_search_paths_iphoneos),
+      'FRAMEWORK_SEARCH_PATHS[sdk=appletvos*]'        => sprintf('"$(inherited)" "%s"', framework_search_paths_appletvos),
       'FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]' => sprintf('"$(inherited)" "%s"', framework_search_paths_iphonesimulator),
+      'FRAMEWORK_SEARCH_PATHS[sdk=appletvsimulator*]' => sprintf('"$(inherited)" "%s"', framework_search_paths_appletvsimulator),
       'OTHER_LDFLAGS'                                => '"$(inherited)" -framework Mpv',
       # Flutter.framework does not contain a i386 slice.
       'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
+      'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'i386',
     }
   else
     s.source_files        = 'Classes/stub/**/*.swift'
